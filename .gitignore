@@ -1,0 +1,46 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# --- Virtualenv ---
+.venv/
+venv/
+ENV/
+env/
+
+# --- Pytest ---
+.cache/
+.pytest_cache/
+*.pytest_cache/
+
+
+# --- Coverage ---
+.coverage
+htmlcov/
+coverage.xml
+report.html
+
+# --- Logs ---
+*.log
+*.tmp
+*.out
+
+# --- Selenium Drivers ---
+drivers/*.exe
+drivers/*.log
+drivers/*.zip
+
+# --- IDE / Configuración ---
+.vscode/
+.idea/
+*.iml
+
+
