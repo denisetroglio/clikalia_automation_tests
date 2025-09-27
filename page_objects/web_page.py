@@ -29,6 +29,16 @@ class AccessWebPage:
         self.btn_continue_step2 = (By.XPATH, "/html/body/main/form/div/div/div/footer/button[2]")
         self.input_name = (By.XPATH, "/html/body/main/form/div/div/div/main/div/div[2]/div[1]/div/div[2]/input")
         self.input_lastname = (By.XPATH, "/html/body/main/form/div/div/div/main/div/div[2]/div[2]/div/div[2]/input")
+        self.make_offer = (By.XPATH, "/html/body/main/div/div[2]/section/div[1]/a[2]/div/div[2]/div[5]/button[2]/span")
+        self.input_offer = (By.XPATH, "/html/body/main/form/div/div/div/main/div[2]/div[2]/div[1]/div/div/input")
+        self.btn_continue_offer = (By.XPATH, "/html/body/main/form/div/div/div/main/div[3]/button/span")
+        self.conditions_one = (By.XPATH, "/html/body/main/form/div/div/div/main/div[1]/div[3]/div[1]/label/div/div")
+        self.conditions_two = (By.XPATH, "/html/body/main/form/div/div/div/main/div[1]/div[3]/div[2]/label/div/div")
+        self.btn_conditions = (By.XPATH, "/html/body/main/form/div/div/div/main/div[2]/button[2]/span")
+        self.private_option = (By.XPATH, "/html/body/main/form/div/div/div/main/div/div[1]/div[2]/button[1]")
+        self.btn_private_continue = (By.XPATH, "/html/body/main/form/div/div/div/main/div/div[2]/button[2]/span")
+        self.input_name_offer = (By.XPATH, "/html/body/main/form/div/div/div/main/div/div[1]/div[2]/div[1]/div/div[2]/input")
+        self.input_lastname_offer = (By.XPATH, "/html/body/main/form/div/div/div/main/div/div[1]/div[2]/div[2]/div/div[2]/input")
 
 
     def open_webpage(self):
@@ -69,3 +79,22 @@ class AccessWebPage:
             self.wait.until(EC.visibility_of_element_located(self.input_name)).send_keys(name)
             self.wait.until(EC.visibility_of_element_located(self.input_lastname)).send_keys(lastname)
             time.sleep(4)
+
+        
+    def  user_make_offer(self, offer: float, name: str, lastname: str):
+               time.sleep(5)
+               self.wait.until(EC.element_to_be_clickable(self.make_offer)).click() 
+               self.wait.until(EC.visibility_of_element_located(self.input_offer)).send_keys(offer)
+               self.wait.until(EC.element_to_be_clickable(self.btn_continue_offer)).click()
+               time.sleep(5)
+               self.wait.until(EC.element_to_be_clickable(self.conditions_one)).click()
+               time.sleep(5)
+               self.wait.until(EC.element_to_be_clickable(self.conditions_two)).click()
+               self.wait.until(EC.element_to_be_clickable(self.btn_conditions)).click()
+               time.sleep(5)
+               self.wait.until(EC.element_to_be_clickable(self.private_option)).click()
+               self.wait.until(EC.element_to_be_clickable(self.btn_private_continue)).click()
+               time.sleep(3)
+               self.wait.until(EC.visibility_of_element_located(self.input_name_offer)).send_keys(name)
+               self.wait.until(EC.visibility_of_element_located(self.input_lastname_offer)).send_keys(lastname)
+               time.sleep(4)

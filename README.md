@@ -11,6 +11,7 @@
 ## 🛠️ Tecnologies:
 
 - [Pytest](https://docs.pytest.org/en/stable/index.html) A robust and flexible testing framework, ideal for functional and scalable test automation.
+- [Pytest BDD](https://pytest-bdd.readthedocs.io/en/stable/) Pytest-bdd implements a subset of the Gherkin language to enable automating project requirements testing and to facilitate behavioral driven development.
 - [Python](https://www.python.org/downloads/) The main programming language used to develop test scripts.
 - [Selenium](https://www.selenium.dev/) A browser automation tool used to simulate user interactions with the web interface.
 - [Gherkin](https://cucumber.io/docs/gherkin/) Gherkin is a set of grammar rules that makes plain text structured enough for Cucumber to understand.
