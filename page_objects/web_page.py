@@ -50,7 +50,6 @@ class AccessWebPage:
             time.sleep(7)
             self.wait.until(EC.visibility_of_element_located(self.input_province)).click()
             time.sleep(7)
-            #self.wait.until(EC.visibility_of_element_located(self.input_province)).send_keys(province)
             self.wait.until(EC.element_to_be_clickable(self.select_province)).click()
             time.sleep(5)
             self.wait.until(EC.element_to_be_clickable(self.btn_found_home)).click()
