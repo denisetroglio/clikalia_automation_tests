@@ -14,8 +14,8 @@ logger = logging.getLogger(__name__)
 feature_file = os.path.join(os.path.dirname(__file__), "../features/mortgage.feature")
 
 
-@scenario(feature_file, "User make a mortgage offer")
-def test_make_offer():
+@scenario(feature_file, "User make a valid mortgage offer")
+def test_make_valid_offer():
     pass
 @pytest.fixture
 def driver():
@@ -28,17 +28,38 @@ def driver():
 def web_page(driver):
     return AccessWebPage(driver)
 
-@given("the user access Clikalia webpage")
+@given("the user access the Clikalia webpage")
 def access_webpage(web_page):
     web_page.open_webpage()
     time.sleep(5)
 
 
-@when("the user start to search a apartment on Madrid")
+@when("the user start to search an apartment on Madrid")
 def search_home(web_page):
     web_page.search_home("Madrid")
 
 
-@then("the user select a apartment to make an offer")
+@then("the user select an apartment to make an offer")
 def offer(web_page):
     web_page.user_make_offer("1.100.000", "Denise", "Troglio")
+
+
+# Invalid scenario:
+
+@scenario(feature_file, "User make an invalid mortgage offer")
+def test_make_invalid_offer():
+    pass
+@pytest.fixture
+def driver():
+    driver = webdriver.Chrome()
+    driver.maximize_window()
+    yield driver
+    driver.quit()
+
+@pytest.fixture
+def web_page(driver):
+    return AccessWebPage(driver)
+
+@given("the user select an apartment to make an invalid offer")
+def offer(web_page):
+    web_page.invalid_offer("900.000")

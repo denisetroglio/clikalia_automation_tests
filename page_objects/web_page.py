@@ -24,6 +24,8 @@ class AccessWebPage:
         self.select_home = (By.XPATH, "/html/body/main/div/div[2]/section/div[1]/a[6]/div/div[2]/div[5]/button[1]/span")
         self.visit_in_person = (By.XPATH, "/html/body/main/form/div/div/div/main/div[2]/div[2]/div[2]/div/div/div[2]")
         self.btn_continue = (By.XPATH, "/html/body/main/form/div/div/div/footer/button/span/span[2]")
+        self.month = (By.XPATH, "/html/body/main/form/div/div/div/main/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]/button[2]")
+        self.october_month = (By.XPATH, "/html/body/main/form/div/div/div/main/div/div[2]/div[1]/div/div/div[1]/div[1]/div[3]/div/button[10]")
         self.select_data = (By.XPATH, "/html/body/main/form/div/div/div/main/div/div[2]/div[1]/div/div/div[2]/div[2]/div/button[8]/div")
         self.select_time = (By.XPATH, "/html/body/main/form/div/div/div/main/div/div[2]/div[2]/div[1]/button[11]")
         self.btn_continue_step2 = (By.XPATH, "/html/body/main/form/div/div/div/footer/button[2]")
@@ -39,6 +41,7 @@ class AccessWebPage:
         self.btn_private_continue = (By.XPATH, "/html/body/main/form/div/div/div/main/div/div[2]/button[2]/span")
         self.input_name_offer = (By.XPATH, "/html/body/main/form/div/div/div/main/div/div[1]/div[2]/div[1]/div/div[2]/input")
         self.input_lastname_offer = (By.XPATH, "/html/body/main/form/div/div/div/main/div/div[1]/div[2]/div[2]/div/div[2]/input")
+        self.alert_invalid_mortgage = (By.XPATH, "/html/body/main/form/div/div/div/main/div[2]/div[2]/div[2]")
 
 
     def open_webpage(self):
@@ -49,7 +52,7 @@ class AccessWebPage:
             self.wait.until(EC.element_to_be_clickable(self.btn_sale)).click()
             time.sleep(7)
             self.wait.until(EC.visibility_of_element_located(self.input_province)).click()
-            time.sleep(7)
+            time.sleep(7)            
             self.wait.until(EC.element_to_be_clickable(self.select_province)).click()
             time.sleep(5)
             self.wait.until(EC.element_to_be_clickable(self.btn_found_home)).click()
@@ -71,6 +74,8 @@ class AccessWebPage:
             time.sleep(7)
             self.wait.until(EC.element_to_be_clickable(self.btn_continue)).click()
             time.sleep(10)
+            self.wait.until(EC.element_to_be_clickable(self.month)).click()
+            self.wait.until(EC.element_to_be_clickable(self.october_month)).click()
             self.wait.until(EC.element_to_be_clickable(self.select_data)).click()
             self.wait.until(EC.element_to_be_clickable(self.select_time)).click()
             time.sleep(5)
@@ -97,3 +102,9 @@ class AccessWebPage:
                self.wait.until(EC.visibility_of_element_located(self.input_name_offer)).send_keys(name)
                self.wait.until(EC.visibility_of_element_located(self.input_lastname_offer)).send_keys(lastname)
                time.sleep(4)
+
+    def invalid_offer(self, offer: float):
+           self.wait.until(EC.element_to_be_clickable(self.make_offer)).click() 
+           self.wait.until(EC.visibility_of_element_located(self.input_offer)).send_keys(offer)
+           element = self.wait.until(EC.visibility_of_element_located(self.alert_invalid_mortgage))
+           self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
