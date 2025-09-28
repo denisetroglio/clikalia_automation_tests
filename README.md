@@ -22,6 +22,7 @@
 ## Step 1:
 
 1.0. Install Python
+
 1.1. Crete a virtual environment:
 
 ```bash
